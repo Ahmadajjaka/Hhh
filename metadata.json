@@ -1,0 +1,6 @@
+{
+  "name": "نور القرآن - منصة إسلامية متكاملة",
+  "description": "تطبيق إسلامي متكامل يجمع بين المصحف الشريف بالرسم العثماني، تلاوات الشيخ عبد الباسط عبد الصمد، مواقيت الصلاة والأذان، بوصلة القبلة ثلاثية الأبعاد، المسبحة الإلكترونية، والأذكار اليومية.",
+  "requestFramePermissions": ["geolocation", "notifications"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <radialGradient id="bgGradM" cx="50%" cy="45%" r="70%">
+      <stop offset="0%" stop-color="#0a3b2b"/>
+      <stop offset="100%" stop-color="#031911"/>
+    </radialGradient>
+    <linearGradient id="goldGradM" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fcd34d"/>
+      <stop offset="50%" stop-color="#c5a059"/>
+      <stop offset="100%" stop-color="#9e7a35"/>
+    </linearGradient>
+  </defs>
+  <!-- Full-bleed solid/gradient background for Android maskable cropping -->
+  <rect width="512" height="512" fill="url(#bgGradM)"/>
+  <!-- Scaled to 72% inside central safe zone (>= 14% padding each side) -->
+  <g transform="translate(256 256) scale(0.74)">
+    <rect x="-126" y="-126" width="252" height="252" rx="16" fill="none" stroke="url(#goldGradM)" stroke-width="11"/>
+    <rect x="-126" y="-126" width="252" height="252" rx="16" transform="rotate(45)" fill="none" stroke="url(#goldGradM)" stroke-width="11"/>
+    <circle cx="0" cy="0" r="106" fill="#041e15" stroke="url(#goldGradM)" stroke-width="4" stroke-opacity="0.75"/>
+    <path d="M-66 -22 C-42 -36 -14 -34 0 -18 C14 -34 42 -36 66 -22 L66 44 C42 30 14 32 0 46 C-14 32 -42 30 -66 44 Z" fill="url(#goldGradM)"/>
+    <path d="M0 -18 L0 46" stroke="#031911" stroke-width="4"/>
+    <path d="M10 -78 A28 28 0 1 0 32 -42 A22 22 0 1 1 10 -78 Z" fill="#fcd34d"/>
+    <circle cx="14" cy="-64" r="4" fill="#fcd34d"/>
+  </g>
+</svg>

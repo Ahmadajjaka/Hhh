@@ -1,0 +1,258 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Cairo', system-ui, -apple-system, sans-serif;
+    --font-quran: 'Amiri Quran', 'Scheherazade New', 'Amiri', serif;
+    --font-arabic-serif: 'Amiri', 'Scheherazade New', serif;
+
+    --theme-bg: #031911;
+    --theme-bg-alt: #041a13;
+    --theme-header: rgba(4, 30, 21, 0.92);
+    --theme-nav: rgba(3, 23, 16, 0.95);
+    --theme-surface: #06241b;
+    --theme-surface-elevated: #083325;
+    --theme-border: rgba(16, 185, 129, 0.25);
+    --theme-accent: #c5a059;
+    --theme-text: #f8fafc;
+    --theme-text-muted: #a7f3d0;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    direction: rtl;
+    text-align: right;
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    transition: background-color 0.25s ease, color 0.25s ease;
+  }
+}
+
+.font-quran {
+  font-family: var(--font-quran);
+  line-height: 2.2;
+  word-spacing: 0.15em;
+}
+
+.font-arabic-serif {
+  font-family: var(--font-arabic-serif);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 160, 89, 0.3);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(197, 160, 89, 0.6);
+}
+
+/* Islamic Geometric Background Pattern */
+.islamic-pattern {
+  background-color: var(--theme-bg);
+  background-image: radial-gradient(rgba(197, 160, 89, 0.08) 1px, transparent 1px),
+    radial-gradient(rgba(197, 160, 89, 0.05) 1px, transparent 1px);
+  background-size: 32px 32px;
+  background-position: 0 0, 16px 16px;
+}
+
+.gold-glow {
+  text-shadow: 0 0 20px rgba(212, 175, 55, 0.35);
+}
+
+.gold-border {
+  border-color: rgba(197, 160, 89, 0.3);
+}
+
+.gold-border:hover {
+  border-color: rgba(197, 160, 89, 0.6);
+}
+
+/* 3D RTL Mushaf Page Flip Animations */
+@keyframes mushafFlipNext {
+  0% {
+    opacity: 0.5;
+    transform: perspective(1400px) rotateY(-12deg) translateX(-22px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1400px) rotateY(0deg) translateX(0) scale(1);
+  }
+}
+
+@keyframes mushafFlipPrev {
+  0% {
+    opacity: 0.5;
+    transform: perspective(1400px) rotateY(12deg) translateX(22px) scale(0.985);
+  }
+  100% {
+    opacity: 1;
+    transform: perspective(1400px) rotateY(0deg) translateX(0) scale(1);
+  }
+}
+
+@keyframes splashProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-mushaf-next {
+  animation: mushafFlipNext 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: right center;
+}
+
+.animate-mushaf-prev {
+  animation: mushafFlipPrev 0.34s cubic-bezier(0.22, 1, 0.36, 1);
+  transform-origin: left center;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-mushaf-next,
+  .animate-mushaf-prev {
+    animation: none;
+  }
+}
+
+/* ============================================================================
+   Multi-Theme Surface & Typography Overrides
+   Maps emerald sanctuary classes cleanly across Dark & Parchment palettes
+   ============================================================================ */
+
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#031911\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#051c14\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#03150f\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#03150f\]\/80,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#041a13\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#041b13\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#02120c\] {
+  background-color: var(--theme-bg) !important;
+}
+
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#041e15\]\/90,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#041e15\]\/95,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#041c14\]\/95 {
+  background-color: var(--theme-header) !important;
+}
+
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#031710\]\/95 {
+  background-color: var(--theme-nav) !important;
+}
+
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\]\/60,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\]\/80,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\]\/85,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\]\/90,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#06241b\]\/95,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#052319\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#082a1f\],
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#082a1f\]\/70,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#082a1f\]\/80,
+html[data-theme]:not([data-theme='emerald']) .bg-emerald-950\/40,
+html[data-theme]:not([data-theme='emerald']) .bg-emerald-950\/60,
+html[data-theme]:not([data-theme='emerald']) .bg-emerald-950\/70,
+html[data-theme]:not([data-theme='emerald']) .bg-emerald-950 {
+  background-color: var(--theme-surface) !important;
+}
+
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#083325\]\/90,
+html[data-theme]:not([data-theme='emerald']) .bg-\[\#0b3b2c\],
+html[data-theme]:not([data-theme='emerald']) .hover\:bg-\[\#0c382b\]:hover,
+html[data-theme]:not([data-theme='emerald']) .hover\:bg-\[\#0c392c\]:hover,
+html[data-theme]:not([data-theme='emerald']) .hover\:bg-\[\#0d3a2c\]:hover,
+html[data-theme]:not([data-theme='emerald']) .hover\:bg-\[\#0c4230\]:hover {
+  background-color: var(--theme-surface-elevated) !important;
+}
+
+html[data-theme]:not([data-theme='emerald']) .bg-gradient-to-b.from-\[\#06241b\],
+html[data-theme]:not([data-theme='emerald']) .bg-gradient-to-b.from-\[\#083325\],
+html[data-theme]:not([data-theme='emerald']) .bg-gradient-to-r.from-\[\#06291e\],
+html[data-theme]:not([data-theme='emerald']) .bg-gradient-to-l.from-\[\#0a3627\] {
+  background-image: linear-gradient(180deg, var(--theme-surface-elevated), var(--theme-surface)) !important;
+}
+
+/* Parchment Light Mode High-Contrast Typography & Subtle Surface Rules */
+html[data-theme='parchment'] {
+  color-scheme: light;
+}
+
+html[data-theme='parchment'] .text-white,
+html[data-theme='parchment'] .text-slate-100,
+html[data-theme='parchment'] .text-amber-50,
+html[data-theme='parchment'] .text-amber-100,
+html[data-theme='parchment'] .text-emerald-100,
+html[data-theme='parchment'] .text-emerald-100\/90,
+html[data-theme='parchment'] .text-emerald-100\/85,
+html[data-theme='parchment'] .text-emerald-100\/80 {
+  color: #19241e !important;
+}
+
+html[data-theme='parchment'] .text-amber-200,
+html[data-theme='parchment'] .text-amber-300,
+html[data-theme='parchment'] .text-amber-400,
+html[data-theme='parchment'] .text-amber-200\/70,
+html[data-theme='parchment'] .text-amber-200\/80,
+html[data-theme='parchment'] .text-amber-300\/80,
+html[data-theme='parchment'] .text-amber-300\/90 {
+  color: #7c5613 !important;
+}
+
+html[data-theme='parchment'] .text-emerald-200,
+html[data-theme='parchment'] .text-emerald-200\/90,
+html[data-theme='parchment'] .text-emerald-200\/80,
+html[data-theme='parchment'] .text-emerald-200\/75,
+html[data-theme='parchment'] .text-emerald-200\/70,
+html[data-theme='parchment'] .text-emerald-200\/65,
+html[data-theme='parchment'] .text-emerald-300,
+html[data-theme='parchment'] .text-emerald-300\/80,
+html[data-theme='parchment'] .text-emerald-300\/75,
+html[data-theme='parchment'] .text-emerald-300\/70,
+html[data-theme='parchment'] .text-emerald-300\/65,
+html[data-theme='parchment'] .text-emerald-300\/60,
+html[data-theme='parchment'] .text-emerald-300\/50 {
+  color: #264836 !important;
+}
+
+html[data-theme='parchment'] .bg-black\/30,
+html[data-theme='parchment'] .bg-black\/35,
+html[data-theme='parchment'] .bg-black\/40 {
+  background-color: rgba(141, 104, 38, 0.1) !important;
+}
+
+html[data-theme='parchment'] .bg-emerald-950\/70,
+html[data-theme='parchment'] .bg-emerald-950\/60,
+html[data-theme='parchment'] .bg-emerald-950\/40,
+html[data-theme='parchment'] .bg-emerald-950 {
+  background-color: #efe6d1 !important;
+}
+
+html[data-theme='parchment'] .border-emerald-700\/30,
+html[data-theme='parchment'] .border-emerald-700\/40,
+html[data-theme='parchment'] .border-emerald-700\/50,
+html[data-theme='parchment'] .border-emerald-800\/30,
+html[data-theme='parchment'] .border-emerald-800\/35,
+html[data-theme='parchment'] .border-emerald-800\/40,
+html[data-theme='parchment'] .border-emerald-800\/45,
+html[data-theme='parchment'] .border-emerald-800\/50,
+html[data-theme='parchment'] .border-emerald-900\/40 {
+  border-color: rgba(141, 104, 38, 0.25) !important;
+}
+
+html[data-theme='parchment'] .placeholder\:text-emerald-300\/45::placeholder {
+  color: rgba(49, 82, 65, 0.55) !important;
+}

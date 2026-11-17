@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">نور القرآن</string>
+    <string name="title_activity_main">نور القرآن</string>
+    <string name="package_name">com.nooralquran.app</string>
+    <string name="custom_url_scheme">com.nooralquran.app</string>
+</resources>
